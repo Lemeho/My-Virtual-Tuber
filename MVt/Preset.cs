@@ -8,25 +8,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
+using System.IO;
+using System.IO.Pipelines;
 
 namespace MVt
 {
+    
+
     public partial class Preset : Form
     {
         public Preset()
         {
             InitializeComponent();
         }
+        public class DefaultSettings
+        {
+            public string AvatarsPath { get; set; }
+            public string Language { get; set; }
+            public DefaultSettings(string avatarsPath, string language)
+            {
+                AvatarsPath = avatarsPath;
+                Language = language;
+            }
+        }
 
+        
         private void Preset_Load(object sender, EventArgs e)
         {
-            
+            bool have = File.Exists("Settings.json");
+            if (!have)
+            {
+                using (FileStream fs = new FileStream("Settings.json", FileMode.OpenOrCreate))
+                {
+                    DefaultSettings def = new DefaultSettings("", "Русский");
+                    string jsonString = JsonSerializer.Serialize(def); //тут
+                }
+            }
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             Settings set = new Settings();
             set.Show();
+        }
+
+        private void BackColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1 = new ColorDialog();
+            colorDialog1.ShowDialog();
+            ColorPrewiev.BackColor = colorDialog1.Color;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
             this.InputString = new System.Windows.Forms.TextBox();
             this.InputButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.HelppButton = new System.Windows.Forms.Button();
             this.AuthorButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // InputString
@@ -55,6 +57,7 @@
             this.InputButton.TabIndex = 1;
             this.InputButton.Text = "Обзор...";
             this.InputButton.UseVisualStyleBackColor = true;
+            this.InputButton.Click += new System.EventHandler(this.InputButton_Click);
             // 
             // label1
             // 
@@ -71,9 +74,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(14, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 13);
+            this.label2.Size = new System.Drawing.Size(165, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Путь корневой папки туберов";
+            this.label2.Text = "Путь корневой папки аватаров";
             // 
             // LangBox
             // 
@@ -113,6 +116,7 @@
             this.AuthorButton.TabIndex = 7;
             this.AuthorButton.Text = "Автор";
             this.AuthorButton.UseVisualStyleBackColor = true;
+            this.AuthorButton.Click += new System.EventHandler(this.AuthorButton_Click);
             // 
             // BackButton
             // 
@@ -138,8 +142,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.InputButton);
             this.Controls.Add(this.InputString);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки";
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +163,6 @@
         private System.Windows.Forms.Button HelppButton;
         private System.Windows.Forms.Button AuthorButton;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
