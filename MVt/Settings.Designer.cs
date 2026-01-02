@@ -88,6 +88,7 @@
             this.LangBox.Name = "LangBox";
             this.LangBox.Size = new System.Drawing.Size(201, 21);
             this.LangBox.TabIndex = 4;
+            this.LangBox.SelectedIndexChanged += new System.EventHandler(this.LangBox_SelectedIndexChanged);
             // 
             // label3
             // 

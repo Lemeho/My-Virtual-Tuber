@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,23 +23,27 @@ namespace MVt
             InitializeComponent();
         }
 
-        public class DefaultSettings
+        public string dirpath;
+        public string lang;
+        public int counter = 0;
+        public class DefSet
         {
             public string AvatarsPath { get; set; }
             public string Language { get; set; }
-            public DefaultSettings(string avatarsPath, string language)
-            {
-                AvatarsPath = avatarsPath;
-                Language = language;
-            }
         }
+
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            using (FileStream fs = new FileStream("Settings.json", FileMode.OpenOrCreate))
-            {
-                JsonSerializer.DeserializeAsync<DefaultSettings>(fs);
-            }
+            string fileName = "Settings.json";
+            string jsonString = File.ReadAllText(fileName);
+            DefSet defSet = JsonSerializer.Deserialize<DefSet>(jsonString);
+
+            dirpath = defSet.AvatarsPath;
+            lang = defSet.Language;
+
+            InputString.Text = dirpath;
+            LangBox.Text = lang;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -61,6 +66,41 @@ namespace MVt
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 InputString.Text = folderBrowserDialog1.SelectedPath;
+                var dirsettings = new DefSet()
+                {
+                    AvatarsPath = folderBrowserDialog1.SelectedPath,
+                    Language = lang,
+                };
+                string fileName = "Settings.json";
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+                };
+                string jsonString = JsonSerializer.Serialize<DefSet>(dirsettings, options);
+                File.WriteAllText(fileName, jsonString);
+            }
+        }
+
+        private void LangBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var langsettings = new DefSet()
+            {
+                AvatarsPath = dirpath,
+                Language = LangBox.Text,
+            };
+            string fileName = "Settings.json";
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
+            string jsonString = JsonSerializer.Serialize<DefSet>(langsettings, options);
+            File.WriteAllText(fileName, jsonString);
+            counter++;
+            if (counter == 2)
+            {
+                MessageBox.Show("Для применения другого языка следует перезапустить программу\n\nYou need to restart a programm to apply other language", "Совет",MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

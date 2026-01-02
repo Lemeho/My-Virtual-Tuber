@@ -21,28 +21,29 @@ namespace MVt
         {
             InitializeComponent();
         }
-        public class DefaultSettings
+        public class DefSet
         {
             public string AvatarsPath { get; set; }
             public string Language { get; set; }
-            public DefaultSettings(string avatarsPath, string language)
-            {
-                AvatarsPath = avatarsPath;
-                Language = language;
-            }
         }
 
-        
         private void Preset_Load(object sender, EventArgs e)
         {
-            bool have = File.Exists("Settings.json");
-            if (!have)
+            if (!File.Exists("Settings.json"))
             {
-                using (FileStream fs = new FileStream("Settings.json", FileMode.OpenOrCreate))
+                var defsettings = new DefSet
                 {
-                    DefaultSettings def = new DefaultSettings("", "Русский");
-                    string jsonString = JsonSerializer.Serialize(def); //тут
-                }
+                    AvatarsPath = "",
+                    Language = "Русский"
+                };
+                string fileName = "Settings.json";
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping 
+                };
+                string jsonString = JsonSerializer.Serialize<DefSet>(defsettings, options);
+                File.WriteAllText(fileName, jsonString);
             }
         }
 

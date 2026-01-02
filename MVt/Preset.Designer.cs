@@ -30,14 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Preset));
             this.StateList = new System.Windows.Forms.ListBox();
-            this.StatePreview = new System.Windows.Forms.PictureBox();
             this.JiggleTrackBar = new System.Windows.Forms.TrackBar();
             this.NewStateButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.RunButton = new System.Windows.Forms.Button();
             this.JiggleCheck = new System.Windows.Forms.CheckBox();
             this.AvatarsBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.NewAvatarButton = new System.Windows.Forms.Button();
             this.JumpCheck = new System.Windows.Forms.CheckBox();
@@ -45,7 +43,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.BackColor = new System.Windows.Forms.Button();
             this.ColorPrewiev = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.StatePreview)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.JiggleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpTrackBar1)).BeginInit();
             this.SuspendLayout();
@@ -57,16 +55,6 @@
             this.StateList.Name = "StateList";
             this.StateList.Size = new System.Drawing.Size(152, 251);
             this.StateList.TabIndex = 0;
-            // 
-            // StatePreview
-            // 
-            this.StatePreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StatePreview.Location = new System.Drawing.Point(12, 68);
-            this.StatePreview.Name = "StatePreview";
-            this.StatePreview.Size = new System.Drawing.Size(250, 250);
-            this.StatePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.StatePreview.TabIndex = 1;
-            this.StatePreview.TabStop = false;
             // 
             // JiggleTrackBar
             // 
@@ -122,15 +110,6 @@
             this.AvatarsBox.Size = new System.Drawing.Size(152, 21);
             this.AvatarsBox.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Предпросмотр";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -183,32 +162,39 @@
             this.ColorPrewiev.Size = new System.Drawing.Size(152, 23);
             this.ColorPrewiev.TabIndex = 14;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(13, 62);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(249, 259);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Предпросмотр";
+            // 
             // Preset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 496);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ColorPrewiev);
             this.Controls.Add(this.BackColor);
             this.Controls.Add(this.JumpTrackBar1);
             this.Controls.Add(this.JumpCheck);
             this.Controls.Add(this.NewAvatarButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.AvatarsBox);
             this.Controls.Add(this.JiggleCheck);
             this.Controls.Add(this.RunButton);
             this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.NewStateButton);
             this.Controls.Add(this.JiggleTrackBar);
-            this.Controls.Add(this.StatePreview);
             this.Controls.Add(this.StateList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Preset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Преднастройка";
             this.Load += new System.EventHandler(this.Preset_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.StatePreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JiggleTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpTrackBar1)).EndInit();
             this.ResumeLayout(false);
@@ -217,8 +203,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox StatePreview;
         private System.Windows.Forms.ListBox StateList;
         private System.Windows.Forms.Button NewStateButton;
         private System.Windows.Forms.Button RunButton;
@@ -227,13 +211,13 @@
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.ComboBox AvatarsBox;
         private System.Windows.Forms.Button NewAvatarButton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox JumpCheck;
         private System.Windows.Forms.TrackBar JumpTrackBar1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button BackColor;
         private System.Windows.Forms.Panel ColorPrewiev;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
