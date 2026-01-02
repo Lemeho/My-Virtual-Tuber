@@ -44,8 +44,11 @@
             this.BackColor = new System.Windows.Forms.Button();
             this.ColorPrewiev = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ShadowCheck = new System.Windows.Forms.CheckBox();
+            this.ShadowTrackBar = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.JiggleTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpTrackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShadowTrackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // StateList
@@ -108,6 +111,7 @@
             this.AvatarsBox.Location = new System.Drawing.Point(110, 12);
             this.AvatarsBox.Name = "AvatarsBox";
             this.AvatarsBox.Size = new System.Drawing.Size(152, 21);
+            this.AvatarsBox.Sorted = true;
             this.AvatarsBox.TabIndex = 7;
             // 
             // label2
@@ -127,6 +131,7 @@
             this.NewAvatarButton.TabIndex = 6;
             this.NewAvatarButton.Text = "Новый аватар";
             this.NewAvatarButton.UseVisualStyleBackColor = true;
+            this.NewAvatarButton.Click += new System.EventHandler(this.NewAvatarButton_Click);
             // 
             // JumpCheck
             // 
@@ -147,7 +152,7 @@
             // 
             // BackColor
             // 
-            this.BackColor.Location = new System.Drawing.Point(12, 461);
+            this.BackColor.Location = new System.Drawing.Point(13, 542);
             this.BackColor.Name = "BackColor";
             this.BackColor.Size = new System.Drawing.Size(75, 23);
             this.BackColor.TabIndex = 13;
@@ -157,7 +162,7 @@
             // 
             // ColorPrewiev
             // 
-            this.ColorPrewiev.Location = new System.Drawing.Point(110, 461);
+            this.ColorPrewiev.Location = new System.Drawing.Point(111, 542);
             this.ColorPrewiev.Name = "ColorPrewiev";
             this.ColorPrewiev.Size = new System.Drawing.Size(152, 23);
             this.ColorPrewiev.TabIndex = 14;
@@ -171,14 +176,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Предпросмотр";
             // 
+            // ShadowCheck
+            // 
+            this.ShadowCheck.AutoSize = true;
+            this.ShadowCheck.Location = new System.Drawing.Point(12, 468);
+            this.ShadowCheck.Name = "ShadowCheck";
+            this.ShadowCheck.Size = new System.Drawing.Size(80, 17);
+            this.ShadowCheck.TabIndex = 11;
+            this.ShadowCheck.Text = "Затенение";
+            this.ShadowCheck.UseVisualStyleBackColor = true;
+            // 
+            // ShadowTrackBar
+            // 
+            this.ShadowTrackBar.Location = new System.Drawing.Point(11, 491);
+            this.ShadowTrackBar.Name = "ShadowTrackBar";
+            this.ShadowTrackBar.Size = new System.Drawing.Size(250, 45);
+            this.ShadowTrackBar.TabIndex = 12;
+            // 
             // Preset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 496);
+            this.ClientSize = new System.Drawing.Size(445, 571);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ColorPrewiev);
             this.Controls.Add(this.BackColor);
+            this.Controls.Add(this.ShadowTrackBar);
+            this.Controls.Add(this.ShadowCheck);
             this.Controls.Add(this.JumpTrackBar1);
             this.Controls.Add(this.JumpCheck);
             this.Controls.Add(this.NewAvatarButton);
@@ -193,10 +217,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Preset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Преднастройка";
+            this.Text = "Preset";
             this.Load += new System.EventHandler(this.Preset_Load);
             ((System.ComponentModel.ISupportInitialize)(this.JiggleTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.JumpTrackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ShadowTrackBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,7 +234,6 @@
         private System.Windows.Forms.CheckBox JiggleCheck;
         private System.Windows.Forms.TrackBar JiggleTrackBar;
         private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.ComboBox AvatarsBox;
         private System.Windows.Forms.Button NewAvatarButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox JumpCheck;
@@ -218,6 +242,9 @@
         private System.Windows.Forms.Button BackColor;
         private System.Windows.Forms.Panel ColorPrewiev;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox AvatarsBox;
+        private System.Windows.Forms.CheckBox ShadowCheck;
+        private System.Windows.Forms.TrackBar ShadowTrackBar;
     }
 }
 

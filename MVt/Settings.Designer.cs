@@ -80,6 +80,7 @@
             // 
             // LangBox
             // 
+            this.LangBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LangBox.FormattingEnabled = true;
             this.LangBox.Items.AddRange(new object[] {
             "Русский",
@@ -145,8 +146,8 @@
             this.Controls.Add(this.InputString);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Settings";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Настройки";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

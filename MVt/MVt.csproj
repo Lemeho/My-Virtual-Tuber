@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewAvatar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewAvatar.Designer.cs">
+      <DependentUpon>NewAvatar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preset.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NewAvatar.resx">
+      <DependentUpon>NewAvatar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Preset.resx">
       <DependentUpon>Preset.cs</DependentUpon>
     </EmbeddedResource>
