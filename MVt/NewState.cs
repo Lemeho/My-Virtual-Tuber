@@ -3,36 +3,35 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
+using System.IO;
 
 namespace MVt
 {
-    public partial class NewAvatar : Form
+    public partial class NewState : Form
     {
         public event Action<bool> UpdateThis;
         string boofer = "";
         public string dirpath;
+        public string avname;
 
-        public NewAvatar()
-        {
-            InitializeComponent();
-        }
         public class DefSet
         {
             public string AvatarsPath { get; set; }
             public string Language { get; set; }
         }
 
-        private void NewAvatar_Load(object sender, EventArgs e)
+        public NewState()
         {
-            NameBox.Text = "Новый Чел";
+            InitializeComponent();
+        }
+        private void NewState_Load(object sender, EventArgs e)
+        {
+            NameBox.Text = "Весёло-Грустный";
             NameBox.ForeColor = Color.Gray;
 
             string fileName = "Settings.json";
@@ -45,23 +44,18 @@ namespace MVt
         private void CreateButton_Click(object sender, EventArgs e)
         {
             string name = NameBox.Text;
-            string newdir = $"{dirpath}\\{name}";
+            string newstate = $"{dirpath}\\{avname}\\{name}";
             int n = 1;
             bool reset = true;
-            while (Directory.Exists(newdir))
+            while (Directory.Exists(newstate))
             {
                 n++;
-                newdir = $"{dirpath}\\{name} ({n})";
+                newstate = $"{dirpath}\\{avname}\\{name} ({n})";
             }
 
-            Directory.CreateDirectory(newdir);
-            UpdateThis?.Invoke(reset); 
+            Directory.CreateDirectory(newstate);
+            UpdateThis?.Invoke(reset);
             this.Close();
-        }
-
-        private void NameBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void NameBox_Enter(object sender, EventArgs e)
@@ -74,11 +68,11 @@ namespace MVt
         {
             if (NameBox.Text == "")
             {
-                NameBox.Text = "Новый Чел";
+                NameBox.Text = "Весёло-Грустный";
                 NameBox.ForeColor = Color.Gray;
                 boofer = "";
             }
-            else 
+            else
             {
                 boofer = NameBox.Text;
             }

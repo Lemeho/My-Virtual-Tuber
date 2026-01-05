@@ -135,6 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 218);
+            this.ControlBox = false;
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.AuthorButton);
             this.Controls.Add(this.HelppButton);
@@ -144,7 +145,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.InputButton);
             this.Controls.Add(this.InputString);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Settings";

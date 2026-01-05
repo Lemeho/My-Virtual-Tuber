@@ -23,9 +23,12 @@ namespace MVt
             InitializeComponent();
         }
 
+        public event Action<bool> UpdateThis;
+
         public string dirpath;
         public string lang;
         public int counter = 0;
+        public bool reset;
         public class DefSet
         {
             public string AvatarsPath { get; set; }
@@ -46,11 +49,6 @@ namespace MVt
             LangBox.Text = lang;
         }
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void HelppButton_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Lemeho/My-Virtual-Tuber/blob/master/README.md");
@@ -63,9 +61,11 @@ namespace MVt
 
         private void InputButton_Click(object sender, EventArgs e)
         {
+            reset = true;
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 InputString.Text = folderBrowserDialog1.SelectedPath;
+                
                 var dirsettings = new DefSet()
                 {
                     AvatarsPath = folderBrowserDialog1.SelectedPath,
@@ -79,7 +79,9 @@ namespace MVt
                 };
                 string jsonString = JsonSerializer.Serialize<DefSet>(dirsettings, options);
                 File.WriteAllText(fileName, jsonString);
+                
             }
+            UpdateThis?.Invoke(reset);
         }
 
         private void LangBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,11 +99,11 @@ namespace MVt
             };
             string jsonString = JsonSerializer.Serialize<DefSet>(langsettings, options);
             File.WriteAllText(fileName, jsonString);
-            counter++;
-            if (counter == 2)
-            {
-                MessageBox.Show("Для применения другого языка следует перезапустить программу\n\nYou need to restart a programm to apply other language", "Совет",MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
